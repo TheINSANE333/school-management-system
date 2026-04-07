@@ -134,20 +134,20 @@ Another School Management System build with Laravel and PHP 7
   ```
 
   ```
-  $ git clone https://github.com/TheINSANE333/school-management-system.git cloudschool
+  git clone https://github.com/TheINSANE333/school-management-system.git cloudschool
   ```
 
 - change directory
   ```
-  $ cd cloudschool
+  cd cloudschool
   ```
 - Copy sample `env` file and change configuration according to your need in ".env" file and create Database
   ```
-  $ cp .env.example .env
+  cp .env.example .env
   ```
 - Install php libraries
   ```
-  $ composer install
+  composer install
   ```
 - Setup XAMPP and database
   1. Open XAMPP Control Panel
@@ -160,44 +160,44 @@ Another School Management System build with Laravel and PHP 7
 
     ```
     # setup cloudschool with out demo data
-    $ php artisan fresh-install
+    php artisan fresh-install
 
     # setup cloudschool with demo data
-    $ php artisan fresh-install --with-data
+    php artisan fresh-install --with-data
      # OR
-    $ php artisan fresh-install -d
+    php artisan fresh-install -d
     ```
 
   - Method 2: Step by step
 
     ```
-    $ php artisan storage:link
-    $ php artisan key:generate --ansi
+    php artisan storage:link
+    php artisan key:generate --ansi
 
     # Create database tables and load essential data
-    $ php artisan migrate
-    $ php artisan db:seed
+    php artisan migrate
+    php artisan db:seed
 
     # Load demo data
-    $ php artisan db:seed --class DemoSiteDataSeeder
-    $ php artisan db:seed --class DemoAppDataSeeder
+    php artisan db:seed --class DemoSiteDataSeeder
+    php artisan db:seed --class DemoAppDataSeeder
 
     # Clear all caches
-    $ php artisan view:clear
-    $ php artisan route:clear
-    $ php artisan config:clear
-    $ php artisan cache:clear
+    php artisan view:clear
+    php artisan route:clear
+    php artisan config:clear
+    php artisan cache:clear
     ```
 
 - Install frontend(css,js) dependency libraries and bundle them
   ```
-  $ npm install
-  $ npm run backend-prod
-  $ npm run frontend-prod
+  npm install
+  npm run backend-prod
+  npm run frontend-prod
   ```
 - Start development server
   ```
-  $ php artisan serve
+  php artisan serve
   ```
 
 #### Use the app
