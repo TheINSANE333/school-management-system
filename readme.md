@@ -130,6 +130,7 @@ Another School Management System build with Laravel and PHP 7
 - MySQL >= 5.6 `OR` MariaDB >= 10.1
 - [hrshadhin/laravel-userstamps](https://github.com/hrshadhin/laravel-userstamps.git) [**Already Installed**]
 - NodeJS, npm, webpack
+- [XAMPP 7.4.33](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.33/xampp-windows-x64-7.4.33-0-VC15-installer.exe/download)
 
 #### Download and setup
 
@@ -160,8 +161,11 @@ Another School Management System build with Laravel and PHP 7
   ```
 - Setup application
  - Setup application 
-- Setup application
- - Setup application 
+- Setup XAMPP
+ 1. Open XAMPP Control Panel
+ 2. Start Apache module and MySQL module
+ 3. Open 'http://localhost/phpmyadmin' in browser
+ 4. Add new database name 'sms_2_0'
 - Setup application
 
   - Method 1: By one command
