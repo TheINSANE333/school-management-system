@@ -119,18 +119,8 @@ Another School Management System build with Laravel and PHP 7
 
 #### Installing dependencies
 
-- PHP >= 7.2
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
-- Ctype PHP Extension
-- JSON PHP Extension
-- MySQL >= 5.6 `OR` MariaDB >= 10.1
-- [hrshadhin/laravel-userstamps](https://github.com/hrshadhin/laravel-userstamps.git) [**Already Installed**]
-- NodeJS, npm, webpack
 - [XAMPP 7.4.33](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.33/xampp-windows-x64-7.4.33-0-VC15-installer.exe/download)
+- [Composer](https://getcomposer.org/Composer-Setup.exe)
 
 #### Download and setup
 
