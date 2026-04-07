@@ -144,7 +144,7 @@ Another School Management System build with Laravel and PHP 7
   ```
 
   ```
-  $ git clone https://github.com/hrshadhin/school-management-system.git cloudschool
+  $ git clone https://github.com/TheINSANE333/school-management-system.git cloudschool
   ```
 
 - change directory
