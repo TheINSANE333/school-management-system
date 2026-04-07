@@ -149,13 +149,11 @@ Another School Management System build with Laravel and PHP 7
   ```
   $ composer install
   ```
-- Setup application
- - Setup application 
-- Setup XAMPP
- 1. Open XAMPP Control Panel
- 2. Start Apache module and MySQL module
- 3. Open 'http://localhost/phpmyadmin' in browser
- 4. Add new database name 'sms_2_0'
+- Setup XAMPP and database
+  1. Open XAMPP Control Panel
+  2. Start Apache module and MySQL module
+  3. Open 'http://localhost/phpmyadmin' in browser
+  4. Add new database name 'sms_2_0'
 - Setup application
 
   - Method 1: By one command
