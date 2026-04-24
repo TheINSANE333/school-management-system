@@ -945,7 +945,7 @@ class MarkController extends Controller
                         'exclude_in_result' => $rule->subject->exclude_in_result,
                     ];
                     return $examRules;
-                });
+                }, []);
 
 
             //pull students with marks
@@ -953,7 +953,7 @@ class MarkController extends Controller
                 ->where('academic_year_id', $acYear)
                 ->where('class_id', $class_id)
                 ->select('id','roll_no','regi_no')
-                ->with(['marks' => function($query) use($acYear,$class_id,$exam_id){
+                ->with(['subjects', 'marks' => function($query) use($acYear,$class_id,$exam_id){
                     $query->select('registration_id','subject_id','marks', 'total_marks', 'point', 'present')
                         ->where('academic_year_id', $acYear)
                         ->where('class_id', $class_id)
@@ -983,9 +983,11 @@ class MarkController extends Controller
                     $studentSubjects = $student->subjects->reduce(function ($studentSubjects, $subject){
                         $studentSubjects[$subject->id] =  $subject->pivot->subject_type;
                         return $studentSubjects;
-                    });
+                    }, []);
+                    
                     $studentMarksSubjectCount = count($student->marks);
-                    if ($studentMarksSubjectCount != count($studentSubjects)) {
+                    $examSubjectsForThisStudent = array_intersect_key($examRules, $studentSubjects);
+                    if ($studentMarksSubjectCount != count($examSubjectsForThisStudent)) {
                         $markMissingStudents[] = $student->regi_no;
                         continue;
                     }
