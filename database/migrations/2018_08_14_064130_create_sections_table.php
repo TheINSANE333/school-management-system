@@ -30,24 +30,26 @@ class CreateSectionsTable extends Migration
 
         });
 
-        // create the history table
-        Schema::dropIfExists('section_history');
-        DB::unprepared("CREATE TABLE section_history LIKE sections;");
-        // alter table
-        DB::unprepared("ALTER TABLE section_history MODIFY COLUMN id int(11) NOT NULL, 
+        if(DB::getDriverName() === 'mysql') {
+            // create the history table
+            Schema::dropIfExists('section_history');
+            DB::unprepared("CREATE TABLE section_history LIKE sections;");
+            // alter table
+            DB::unprepared("ALTER TABLE section_history MODIFY COLUMN id int(11) NOT NULL, 
    DROP PRIMARY KEY, ENGINE = MyISAM, ADD action VARCHAR(8) DEFAULT 'insert' FIRST, 
    ADD revision INT(6) NOT NULL AUTO_INCREMENT AFTER action,
    ADD PRIMARY KEY (id, revision);");
 
-        DB::unprepared("DROP TRIGGER IF EXISTS section__ai;");
-        DB::unprepared("DROP TRIGGER IF EXISTS section__au;");
-        //create after insert trigger
-        DB::unprepared("CREATE TRIGGER section__ai AFTER INSERT ON sections FOR EACH ROW
+            DB::unprepared("DROP TRIGGER IF EXISTS section__ai;");
+            DB::unprepared("DROP TRIGGER IF EXISTS section__au;");
+            //create after insert trigger
+            DB::unprepared("CREATE TRIGGER section__ai AFTER INSERT ON sections FOR EACH ROW
     INSERT INTO section_history SELECT 'insert', NULL, d.* 
     FROM sections AS d WHERE d.id = NEW.id;");
-        DB::unprepared("CREATE TRIGGER section__au AFTER UPDATE ON sections FOR EACH ROW
+            DB::unprepared("CREATE TRIGGER section__au AFTER UPDATE ON sections FOR EACH ROW
     INSERT INTO section_history SELECT 'update', NULL, d.*
     FROM sections AS d WHERE d.id = NEW.id;");
+        }
 
 
     }
@@ -59,9 +61,11 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        DB::unprepared("DROP TRIGGER IF EXISTS section__ai;");
-        DB::unprepared("DROP TRIGGER IF EXISTS section__au;");
-        Schema::dropIfExists('section_history');
+        if(DB::getDriverName() === 'mysql') {
+            DB::unprepared("DROP TRIGGER IF EXISTS section__ai;");
+            DB::unprepared("DROP TRIGGER IF EXISTS section__au;");
+            Schema::dropIfExists('section_history');
+        }
         Schema::dropIfExists('sections');
     }
 }
