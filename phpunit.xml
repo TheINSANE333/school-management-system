@@ -23,6 +23,7 @@
         </whitelist>
     </filter>
     <php>
+        <env name="APP_KEY" value="base64:39mMFRilySgjOGjv5+cE9pMU0PoJxrW1b04zffFmt34="/>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>

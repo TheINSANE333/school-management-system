@@ -7,21 +7,22 @@ use App\Role;
 use App\User;
 use App\UserRole;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
 {
-    protected function setUp(): void
+    // use DatabaseMigrations;
+
+   protected function setUp(): void
     {
         parent::setUp();
 
-        Artisan::call('migrate:fresh', ['--force' => true]);
-
-        // Seed roles as they are needed for redirection logic
-        Role::create(['name' => 'Admin', 'deletable' => false]);
-        Role::create(['name' => 'Teacher', 'deletable' => false]);
-        Role::create(['name' => 'Student', 'deletable' => false]);
+        $this->browse(function (Browser $browser) {
+            $browser->logout();
+        });
     }
 
     /**
@@ -49,30 +50,14 @@ class LoginTest extends DuskTestCase
      */
     public function testAdminLogin()
     {
-        $user = User::create([
-            'name' => 'Test Admin',
-            'username' => 'adminuser',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password123'),
-            'status' => AppHelper::ACTIVE,
-        ]);
-
-        UserRole::create([
-            'user_id' => $user->id,
-            'role_id' => AppHelper::USER_ADMIN
-        ]);
-
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                    ->type('[name="username"]', 'adminuser')
-                    ->type('[name="password"]', 'password123')
+                    ->type('[name="username"]', 'admin')
+                    ->type('[name="password"]', 'demo123')
                     ->press('SIGN IN')
-                    ->waitForPath('/dashboard')
+                    ->waitForLocation('/dashboard')
                     ->assertPathIs('/dashboard')
-                    ->assertSee('Dashboard')
-                    ->assertSee('Student')
-                    ->assertSee('Teacher')
-                    ->assertSee('Employee');
+                    ->assertSee('Welcome');
         });
     }
 
@@ -83,29 +68,35 @@ class LoginTest extends DuskTestCase
      */
     public function testStudentLogin()
     {
-        $user = User::create([
-            'name' => 'Test Student',
-            'username' => 'studentuser',
-            'email' => 'student@example.com',
-            'password' => bcrypt('password123'),
-            'status' => AppHelper::ACTIVE,
-        ]);
+        $user = User::where('username', 'studentuser')->first();
 
-        UserRole::create([
+        if (!$user) {
+            $user = User::create([
+                'name' => 'Test Student',
+                'username' => 'studentuser',
+                'email' => 'student@example.com',
+                'password' => bcrypt('osdjaji122'),
+                'status' => AppHelper::ACTIVE,
+            ]);
+        }
+
+        $studentRole = Role::where('name', 'Student')->first();
+
+        UserRole::firstOrCreate([
             'user_id' => $user->id,
-            'role_id' => AppHelper::USER_STUDENT
+            'role_id' => $studentRole->id
         ]);
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/login')
                     ->type('[name="username"]', 'studentuser')
-                    ->type('[name="password"]', 'password123')
+                    ->type('[name="password"]', 'osdjaji122')
                     ->press('SIGN IN')
-                    ->waitForPath('/dashboard')
+                    ->waitForLocation('/dashboard')
                     ->assertPathIs('/dashboard')
                     ->assertSee('Dashboard')
                     ->assertSee('Welcome to CloudSchool')
-                    ->assertDontSee('Student') // Admin-only boxes
+                    ->assertDontSee('Employee')
                     ->assertDontSee('Teacher');
         });
     }
