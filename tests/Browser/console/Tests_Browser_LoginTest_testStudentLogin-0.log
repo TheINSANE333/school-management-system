@@ -1,0 +1,20 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/dashboard - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1777364370872
+    },
+    {
+        "level": "WARNING",
+        "message": "http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216 1:199824 \"jQuery.Deferred exception: r.hasOwnProperty is not a function\" \"TypeError: r.hasOwnProperty is not a function\\n    at l.getOptions (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:31349)\\n    at l.init (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:30237)\\n    at new l (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:29760)\\n    at HTMLAnchorElement.\\u003Canonymous> (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:38797)\\n    at T.each (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:171247)\\n    at T.fn.init.each (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:169726)\\n    at t.fn.tooltip (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:38665)\\n    at HTMLDocument.\\u003Canonymous> (http:\/\/127.0.0.1:8000\/js\/theme.js?id=52ce033fea11fc37020da8fa778f634f:2:69868)\\n    at u (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:198264)\\n    at c (http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216:2:198566)\" undefined",
+        "source": "console-api",
+        "timestamp": 1777364371082
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/js\/vendor.js?id=ed13918511514026fb02669b92112216 1:31348 Uncaught TypeError: r.hasOwnProperty is not a function",
+        "source": "javascript",
+        "timestamp": 1777364371096
+    }
+]

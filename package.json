@@ -28,6 +28,7 @@
         "bootstrap": "^3.4.0",
         "bootstrap-colorpicker": "^3.4.0",
         "chart.js": "^2.9.4",
+        "chromedriver": "^147.0.4",
         "datatables.net": "^1.11.3",
         "datatables.net-bs": "^1.11.0",
         "datatables.net-responsive-bs": "^2.2.1",
@@ -40,10 +41,10 @@
         "jquery-ui": "^1.13.2",
         "jquery-validation": "^1.19.5",
         "moment": "2.29.4",
+        "popper.js": "^1.16.0",
         "remove": "^0.1.5",
         "select2": "^4.0.12",
         "sweetalert2": "^7.33.1",
-        "toastr": "^2.1.4",
-        "popper.js": "^1.16.0"
+        "toastr": "^2.1.4"
     }
 }
