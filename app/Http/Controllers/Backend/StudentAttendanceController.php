@@ -132,6 +132,7 @@ class StudentAttendanceController extends Controller
         $academic_year = '';
         $class_name = '';
         $section_name = '';
+        $sections = [];
         $academic_years = [];
         $attendance_date = date('d/m/Y');
         $acYear = null;
