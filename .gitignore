@@ -20,3 +20,6 @@ yarn.lock
 .env
 storage/debugbar
 database/seeds/DevPermissionTableSeeder.php
+.phpunit.result.cache
+dusk_source.html
+Test_plan.pdf
